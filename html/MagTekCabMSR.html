@@ -1,0 +1,21 @@
+<html>
+<head>
+  <OBJECT ID="USBHID" name="USBHID" CLASSID="CLSID:22571E97-956A-4CDD-AF8D-AE9C26597683"
+          CODEBASE="../device-libs/MagTekUSBHID.CAB#version=1,18,0,1"></OBJECT>
+  <script type="text/javascript" src="../js/MagTekCabMSR.js"></script>
+
+  <script type="text/javascript" for="USBHID" event="CardDataChanged()">
+    // Script to handle "CardDataChanged" event
+    if (!window.top.magTekApplet.processCardData()) {
+      window.top.magTekApplet.magTekSetInfoMessage("Please swipe credit card again...");
+    }
+  </script>
+
+  <script type="text/javascript" for="USBHID" event="CardDataError()">
+    // Script to handle "CardDataError" event
+    alert("Error reading card. Please try again.");
+    window.top.magTekApplet.magTekSetInfoMessage("Please swipe credit card again...");
+  </script>
+</head>
+<body/>
+</html>

@@ -1,0 +1,47 @@
+<style type="text/css">
+  .apdimage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .apdbutton {
+    font-size: 80%;
+  }
+
+  .apdinfo_status {
+    color: green;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 12px;
+    padding: 4px;
+    text-align: center;
+  }
+
+  .apderror_status {
+    color: red;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    padding: 4px;
+    text-align: center;
+  }
+
+  #apd_input {
+    text-align: center;
+  }
+
+
+</style>
+<script type="text/javascript" src="js/APDInterfaceUI.js"></script>
+
+<div id="APD_dialog_status" class="apdinfo_status">Loading ...</div>
+<img class="apdimage" src="images/iPP320.jpg" title="iPP320 Device" alt="iPP320 Image" width="170" height="84">
+<form id="apd_input">
+  <input type="button" class="apdbutton" value="Try Again" onClick="window.top.apdInterfaceUI.doRequestInput(false)"/>
+  <input type="button" class="apdbutton" value="Cancel" onClick="window.top.apdInterfaceUI.closeDialog()"/>
+</form>

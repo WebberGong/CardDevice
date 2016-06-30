@@ -1,0 +1,28 @@
+/**
+ * Created by wgong on 6/21/2016.
+ */
+body {
+  font-size: 15px;
+}
+
+ul {
+  line-height: 50px;
+}
+
+a {
+  text-decoration: underline;
+  color: blue;
+}
+
+a:hover {
+  color: #cc5400;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  padding: .5em 1em .3em;
+  position: relative;
+  background: #FFFFFF !important;
+  font-size: 1em !important;
+}
+
+

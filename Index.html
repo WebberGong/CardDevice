@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="js/jquery/jquery-ui-1.8.21.custom.min.js"></script>
+  <script type="text/javascript" src="js/sdi_lib.js"></script>
+  <script type="text/javascript" src="js/signaturePAD/html2canvas.js"></script>
+  <script type="text/javascript" src="js/signaturePAD/SignPad.js"></script>
+  <script type="text/javascript" src="js/signaturePAD/SigWebTablet.js"></script>
+  <script type="text/javascript" src="js/APDCardInput.js"></script>
+  <script type="text/javascript" src="js/MagTekCardInput.js"></script>
+  <link type="text/css" rel="stylesheet" href="css/jquery/jquery.ui.all.css">
+  <link type="text/css" rel="stylesheet" href="css/jquery/jquery.ui.base.css">
+  <link type="text/css" rel="stylesheet" href="css/jquery/jquery.ui.core.css">
+  <link type="text/css" rel="stylesheet" href="css/jquery/jquery.ui.custom.css">
+  <link type="text/css" rel="stylesheet" href="css/jquery/jquery.ui.datepicker.css">
+  <link type="text/css" rel="stylesheet" href="css/jquery/jquery.ui.dialog.css">
+  <link type="text/css" rel="stylesheet" href="css/jquery/jquery.ui.progressbar.css">
+  <link type="text/css" rel="stylesheet" href="css/jquery/jquery.ui.resizable.css">
+  <link type="text/css" rel="stylesheet" href="css/jquery/jquery.ui.tabs.css">
+  <link type="text/css" rel="stylesheet" href="css/jquery/jquery.ui.theme.css">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+
+  <script type="text/javascript">
+    var pin_pad_type = -1;
+    var pin_pad_port = '';
+    var mag_tek_type = -1;
+    var is_ie = true;
+    var use_old_method = false;
+
+    function PinPadClick(target) {
+      pin_pad_port = document.getElementById('port' + pin_pad_type).value;
+      if (pin_pad_port === undefined || pin_pad_port === '' || pin_pad_port === null) {
+        alert('Please input port first!');
+        return;
+      }
+      window.apdCardInput = new APDCardInput(
+        ams_order_id = 'Receipt ID 22739',
+        ams_order_descriptor = 'YMCA OF METROPOLITAN LOS ANGELES',
+        receipt_number = 3,
+        committed_receipt_id = 22739,
+        key = 1,
+        is_manual_entry = false,
+        amount = 11,
+        is_debit_card = false,
+        is_refund = false,
+        payer_customer_id = 7235,
+        payer_company_id = 0,
+        payer_company_agent_id = -1,
+        payer_addr = '',
+        payer_zip = '',
+        receipt_payment_id = 20266
+      );
+      window.apdCardInput.APDInputDialog(target);
+    }
+    function magTekCardIPADClick(target) {
+      is_ie = document.getElementById('isIE' + mag_tek_type).checked;
+      use_old_method = document.getElementById('isUseOldMethod' + mag_tek_type).checked;
+      window.magTekCardIPADInput = new MagTekCardInput('MagtekIPAD', is_ie, use_old_method);
+      window.magTekCardIPADInput.magTekInputDialog(target);
+    }
+    function magTekCardDynamagClick(target) {
+      is_ie = document.getElementById('isIE' + mag_tek_type).checked;
+      use_old_method = document.getElementById('isUseOldMethod' + mag_tek_type).checked;
+      window.magTekCardDynamagInput = new MagTekCardInput('MagtekDynamag', is_ie, use_old_method);
+      window.magTekCardDynamagInput.magTekInputDialog(target);
+    }
+  </script>
+</head>
+<body>
+<ul>
+  <li>
+    -------------------------------------------------------------------------
+    <br/><label>Port:&nbsp;&nbsp;<input id="port1" type="text" style="width: 100px; height: 20px;" placeholder="COM1"/></label>
+    <br/><a id="item1" onclick="pin_pad_type = 1;PinPadClick(this);">Pin Pad Paymentech</a>
+  </li>
+  <li>
+    -------------------------------------------------------------------------
+    <br/><label>Port:&nbsp;&nbsp;<input id="port2" type="text" style="width: 100px; height: 20px;" placeholder="COM2"/></label>
+    <br/><a id="item2" onclick="pin_pad_type = 2;PinPadClick(this);">Pin Pad Moneris</a>
+  </li>
+  <li>
+    -------------------------------------------------------------------------
+    <br/><label>Port:&nbsp;&nbsp;<input id="port3" type="text" style="width: 100px; height: 20px;" placeholder="COM3"/></label>
+    <br/><a id="item3" onclick="pin_pad_type = 3;PinPadClick(this);">Pin Pad Paymentech EMV</a>
+  </li>
+  <li>
+    -------------------------------------------------------------------------
+    <br/><label>Port:&nbsp;&nbsp;<input id="port4" type="text" style="width: 100px; height: 20px;" placeholder="COM4"/></label>
+    <br/><a id="item4" onclick="pin_pad_type = 4;PinPadClick(this);">Pin Pad Elavon EMV</a>
+  </li>
+  <li>
+    -------------------------------------------------------------------------
+    <br/><label>Is IE:&nbsp;&nbsp;<input id="isIE1" type="checkbox" style="width: 100px; height: 20px;" checked="checked"/></label>
+    <br/><label>Is Use Old Method:&nbsp;&nbsp;<input id="isUseOldMethod1" type="checkbox" style="width: 100px; height: 20px;"/></label>
+    <br/><a id="item5" onclick="mag_tek_type = 1;magTekCardIPADClick(this);">Mag Tek IPAD Device</a>
+  </li>
+  <li>
+    -------------------------------------------------------------------------
+    <br/><label>Is IE:&nbsp;&nbsp;<input id="isIE2" type="checkbox" style="width: 100px; height: 20px;" checked="checked"/></label>
+    <br/><label>Is Use Old Method:&nbsp;&nbsp;<input id="isUseOldMethod2" type="checkbox" style="width: 100px; height: 20px;"/></label>
+    <br/><a id="item6" onclick="mag_tek_type = 2;magTekCardDynamagClick(this);">Mag Tek Dynamag Device</a>
+  </li>
+</ul>
+</body>
+</html>

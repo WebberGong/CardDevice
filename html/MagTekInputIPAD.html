@@ -1,0 +1,54 @@
+<style type="text/css">
+  .mtimage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .mtbutton {
+    font-size: 80%;
+  }
+
+  .mtinfo_status {
+    color: green;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 12px;
+    padding: 4px;
+    text-align: center;
+  }
+
+  .mterror_status {
+    color: red;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    padding: 4px;
+    text-align: center;
+  }
+
+  #magtek_ipad_input {
+    text-align: center;
+  }
+
+  #magtek_button_help {
+    display: none;
+  }
+</style>
+
+<script type="text/javascript" src="js/MagTekInputIPAD.js"></script>
+
+<div id="magtek_dialog_status" class="mtinfo_status">Initializing...</div>
+<img class="mtimage" src="images/magtek-pin-ipad-1.jpg" title="MagTek IPAD Device" alt="IPAD Image" width="90"
+     height="90">
+<form id="magtek_ipad_input">
+  <input type="hidden" id="magtek_ipad_input_manual" value="false"/>
+  <div id="magtek_button_help" class="mtinfo_status"><strong>Select button for IPAD input mode</strong></div>
+  <input type="button" class="mtbutton" value="Card Swipe" onClick="window.top.magTekInput.doRequestInput(false)"/>
+  <input type="button" class="mtbutton" value="Manual Keypad" onClick="window.top.magTekInput.doRequestInput(true)"/>
+</form>
+<DIV id="dvObjectHolder"></DIV>
