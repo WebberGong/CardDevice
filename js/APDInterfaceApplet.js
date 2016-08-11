@@ -81,22 +81,22 @@ function APDInterfaceApplet(
           if (window.navigator.appName.toLowerCase().indexOf("netscape") != -1) { // set object for Netscape:
             appletStr =
               "<applet codebase=" + applet_code_base + " " +
-              "archive=\"" + applet_name + ".jar\"" +
-              "code=\"" + applet_name + ".class\"" +
-              "id=\"APDInterfaceApplet\"" +
-              "name=\"APDInterfaceApplet\"" +
+              "archive=\"" + applet_name + ".jar\" " +
+              "code=\"" + applet_name + ".class\" " +
+              "id=\"APDInterfaceApplet\" " +
+              "name=\"APDInterfaceApplet\" " +
               "height=\"0\" width=\"0\" " +
-              "scriptable=\"true\"" +
-              "mayscript=\"mayscript\"" +
+              "scriptable=\"true\" " +
+              "mayscript=\"mayscript\" " +
               "pluginspage=\"http://java.com/en/download/index.jsp\"" + ">";
             mainTagName = 'applet';
           } else if (window.navigator.appName.toLowerCase().indexOf('internet explorer') != -1) { //set object for IE
             appletStr =
-              "<object codebase=" + applet_code_base + " type=\"application/x-java-applet;version=1.5\"" +
-              "archive = \"" + applet_name + ".jar\"" +
-              "code=\"" + applet_name + ".class\"" +
-              "id=\"APDInterfaceApplet\"" +
-              "name=\"APDInterfaceApplet\"" +
+              "<object codebase=" + applet_code_base + " type=\"application/x-java-applet;version=1.5\" " +
+              "archive = \"" + applet_name + ".jar\" " +
+              "code=\"" + applet_name + ".class\" " +
+              "id=\"APDInterfaceApplet\" " +
+              "name=\"APDInterfaceApplet\" " +
               "height=\"0\" width=\"0\">" +
               "<param name=\"mayscript\" value=\"true\">";
             mainTagName = 'object';
